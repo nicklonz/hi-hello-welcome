@@ -1,0 +1,15 @@
+<h1>Second Question</h1>
+
+<hr>
+
+<h2><%= @question[:question] %></h2>
+
+<%= form_for :q, url: answer_question_path(question: :second_question) do |form| %>
+  <% @question[:options].shuffle.each do |option| %>
+    <p>
+      <%= form.radio_button :answer, option %> <%= option %>
+    </p>
+  <% end %>
+
+  <%= form.submit "Answer!" %>
+<% end %>
