@@ -17,6 +17,16 @@ class QuestionsController < ApplicationController
     @question = questions.third_options
   end
 
+  def question_4
+    questions = Questions.new
+    @question = questions.fourth_options
+  end
+
+  def question_5
+    questions = Questions.new
+    @question = questions.fifth_options
+  end
+
   def congrats
   end
 
@@ -36,6 +46,14 @@ class QuestionsController < ApplicationController
 
     elsif question_identifier == 'third_question'
       options = questions.third_options[:options]
+      next_route = fourth_question_path
+
+    elsif question_identifier == 'fourth_question'
+      options = questions.fourth_options[:options]
+      next_route = fifth_question_path
+
+    elsif question_identifier == 'fifth_question'
+      options = questions.fifth_options[:options]
       next_route = congrats_path
     end
 
