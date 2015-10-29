@@ -27,6 +27,18 @@ class QuestionsController < ApplicationController
     @question = questions.fifth_options
   end
 
+  # Added question 6 and 7 methods into QuestionController Class
+
+  def question_6
+    questions = Questions.new
+    @question = questions.sixth_options
+  end
+
+  def question_7
+    questions = Questions.new
+    @question = questions.seventh_options
+  end
+
   def congrats
   end
 
@@ -54,13 +66,24 @@ class QuestionsController < ApplicationController
 
     elsif question_identifier == 'fifth_question'
       options = questions.fifth_options[:options]
+      next_route = sixth_question_path
+    
+
+    # Added Sixth and Seventh Question paths to questions_controller
+     elsif question_identifier == 'sixth_question'
+      options = questions.sixth_options[:options]
+      next_route = seventh_question_path
+    
+
+     elsif question_identifier == 'seventh_question'
+      options = questions.seventh_options[:options]
       next_route = congrats_path
     end
+end
 
     if options.first == users_answer
       redirect_to next_route
     else
       redirect_to first_question_path
     end
-  end
 end
