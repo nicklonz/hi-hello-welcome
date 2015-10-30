@@ -79,11 +79,13 @@ class QuestionsController < ApplicationController
       options = questions.seventh_options[:options]
       next_route = congrats_path
     end
-end
+# end
 
     if options.first == users_answer
       redirect_to next_route
     else
       redirect_to first_question_path
     end
+
+  end
 end
